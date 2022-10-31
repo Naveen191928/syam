@@ -1,0 +1,18 @@
+FROM ubuntu
+
+RUN yum install java1.8.0 -y
+
+RUN mkdir /opt/tomcat
+
+WORKDIR /opt/tomcat
+
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.63/bin/apache-tomcat-9.0.63.tar.gz .
+
+RUN tar -xzf apache-tomcat-9.0.63.tar.gz
+
+
+EXPOSE 8080
+
+CMD ["/opt/tomcat/apache-tomcat-9.0.63/bin"]
+
+CMD ["catalina.sh", "run"]
